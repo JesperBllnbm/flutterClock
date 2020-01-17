@@ -26,14 +26,11 @@ class SquaresManager {
     return squares.every((s) => s.complete == true);
   }
 
-  Future<bool> _doneFuture;
   bool _initDone = false;
-
-  Future get initializationDone => _doneFuture;
 
   List<SplitSquareModel> squares = List<SplitSquareModel>();
 
-  void init(BoxConstraints constraints) async {
+  Future<bool> init(BoxConstraints constraints) async {
     if (!_initDone) {
       _constraints = constraints;
       squares.add(SplitSquareModel(
@@ -42,8 +39,8 @@ class SquaresManager {
           _randomColor(),
           0));
       _initDone = true;
-      _doneFuture = Future<bool>.value(true);
     }
+    return true;
   }
 
   void reloadTime() {
@@ -51,7 +48,7 @@ class SquaresManager {
     squares.add(SplitSquareModel(
         Rect.fromPoints(
             Offset.zero, Offset(_constraints.maxWidth, _constraints.maxHeight)),
-        _colors != null?_colors[0]:Colors.white,
+        _colors != null ? _colors[0] : Colors.white,
         0));
   }
 
@@ -64,8 +61,6 @@ class SquaresManager {
   }
 
   void markForSplit(Path path, List<Offset> pieces) {
-
-
     squares.where((s) => s.idle == true).forEach((square) {
       if (square.depth >= _maxDepth) {
         square.lifeCycleState = SquareLifeCycleTypes.complete;

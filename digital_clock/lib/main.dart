@@ -32,25 +32,33 @@ void main() {
   // Your job is to edit [DigitalClock], or replace it with your
   // own clock widget. (Look in digital_clock.dart for more details!)
 
+  var pathBuilder = PathBuilder();
+  var squaresManger = SquaresManager();
   runApp(ClockCustomizer(
     (ClockModel model) => LayoutBuilder(builder: (context, constraints) {
-      var pathBuilder = PathBuilder();
-      pathBuilder.init(constraints);
-      var squaresManger = SquaresManager();
-      squaresManger.init(constraints);
-
       return FutureBuilder<List<bool>>(
           future: Future.wait([
-            pathBuilder.initializationDone,
-            squaresManger.initializationDone,
+            pathBuilder.init(constraints),
+            squaresManger.init(constraints),
           ]),
-          builder: (BuildContext context, snapshot) {
-            if (snapshot.hasData) {
-              return MyDigitalClock(
-                  model, pathBuilder, squaresManger, constraints);
-            } else {
-              return Container();
+          builder: (BuildContext context, AsyncSnapshot<List<bool>> snapshot) {
+            //print("futures complete");
+            if (snapshot.hasError) {
+              return Container(
+                child: Center(
+                  child: Text("Something went really wrong"),
+                ),
+              );
             }
+            if (!snapshot.hasData) {
+              return Container(
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            }
+            return MyDigitalClock(
+                model, pathBuilder, squaresManger, constraints);
           });
     }),
   ));

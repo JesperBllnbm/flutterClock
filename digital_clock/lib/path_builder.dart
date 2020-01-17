@@ -13,7 +13,7 @@ class PathBuilder {
 
   factory PathBuilder() => _instance;
 
-  PathBuilder._internal() {}
+  PathBuilder._internal();
 
   BoxConstraints _constraints;
   DateTime _dateTime = DateTime.now();
@@ -30,11 +30,7 @@ class PathBuilder {
 
   get is24HourFormat => _is24HourFormat;
 
-  Future<bool> _doneFuture;
-
   bool _initDone = false;
-
-  Future get initializationDone => _doneFuture;
 
   ttpm.PMFont _myFont;
   Path currentPath;
@@ -43,7 +39,7 @@ class PathBuilder {
   List<Offset> currentPieces = List<Offset>();
   List<Offset> nextPieces = List<Offset>();
 
-  void init(BoxConstraints constraints) async {
+  Future<bool> init(BoxConstraints constraints) async {
     if (!_initDone) {
       ByteData data =
           await rootBundle.load("assets/monospacedWithNormalZero-Bold.ttf");
@@ -53,8 +49,8 @@ class PathBuilder {
       _constraints = constraints;
       _initPath();
       _initDone = true;
-      _doneFuture = Future<bool>.value(true);
     }
+    return true;
   }
 
   void _initPath() {
@@ -122,7 +118,6 @@ class PathBuilder {
 
     _nextPath = _moveAndScale(_nextPath, 0.9);
     nextPieces = _breakIntoPoints(_nextPath, 0.001);
-    print("next path is ready");
   }
 
   int _asciiCodeTime(int digit, DateTime dateTime) {
