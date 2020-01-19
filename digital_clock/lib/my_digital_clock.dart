@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 
 import 'dart:async';
-import 'dart:math';
 
 import 'package:digital_clock/constants/app_colors.dart';
 import 'package:digital_clock/path_builder.dart';
@@ -152,8 +151,8 @@ class _MyDigitalClockState extends State<MyDigitalClock> {
         break;
       default:
         _colorPalette = _brightness == Brightness.light
-            ? lightThemeColors[6]
-            : darkThemeColors[6];
+            ? lightThemeColors[0]
+            : darkThemeColors[0];
     }
     widget.squaresManager.colors = _colorPalette;
   }

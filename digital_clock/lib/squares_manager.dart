@@ -9,7 +9,7 @@ class SquaresManager {
 
   factory SquaresManager() => _instance;
 
-  SquaresManager._internal() {}
+  SquaresManager._internal();
 
   final int _maxDepth = 13;
   final int _minDepth = 9;

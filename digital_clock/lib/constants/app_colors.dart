@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 const List<List<Color>> darkThemeColors = [
-  // Dark one:
   [
     const Color(0xFF192a51),
     const Color(0xFF967aa1),
@@ -51,30 +50,6 @@ const List<List<Color>> darkThemeColors = [
     const Color(0xFF005980),
     const Color(0xFF004664),
   ],
-
-  [
-    const Color(0xFF0C1127),
-    const Color(0xFF400133),
-    const Color(0xFF570030),
-    const Color(0xFF8C0233),
-    const Color(0xFFA60322),
-  ],
-
-  [
-    const Color(0xFF484759),
-    const Color(0xFFBABCD9),
-    const Color(0xFF46588C),
-    const Color(0xFF4D628C),
-    const Color(0xFF7B89A6),
-  ],
-
-  [
-    const Color(0xFF1D1C40),
-    const Color(0xFF797FF2),
-    const Color(0xFF18D992),
-    const Color(0xFF13F28A),
-    const Color(0xFFF29F05),
-  ],
 ];
 
 const List<List<Color>> lightThemeColors = [
@@ -99,7 +74,6 @@ const List<List<Color>> lightThemeColors = [
     const Color(0xFF7f9c96),
     const Color(0xFF8fad88),
   ],
-  //light one
   [
     const Color(0xFFF2F2F2),
     const Color(0xFFD0D9F2),
@@ -107,7 +81,6 @@ const List<List<Color>> lightThemeColors = [
     const Color(0xFF4968A6),
     const Color(0xFF6AAED9),
   ],
-  //light one
   [
     const Color(0xFFffcc00),
     const Color(0xFFff6666),
@@ -115,7 +88,6 @@ const List<List<Color>> lightThemeColors = [
     const Color(0xFF66cccc),
     const Color(0xFFADF7B6),
   ],
-  //light one
   [
     const Color(0xFF9B95BF),
     const Color(0xFFC4C1D9),
